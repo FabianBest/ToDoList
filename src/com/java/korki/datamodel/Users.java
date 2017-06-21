@@ -1,17 +1,38 @@
 package com.java.korki.datamodel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Users {
 	private String name;
 	private String surname;
 	private String login;
 	private String password;
-	
+
+	private List<Tasks> tasksList = new ArrayList<>();
+
 	public Users(String name, String surname, String login, String password) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.login = login;
 		this.password = password;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public List<Tasks> getTasksList() {
+		return tasksList;
+	}
+
+	public void setTasksList(List<Tasks> tasksList) {
+		this.tasksList = tasksList;
 	}
 
 	@Override
@@ -56,4 +77,11 @@ public class Users {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Users [name=" + name + ", surname=" + surname + ", login=" + login + ", password=" + password
+				+ ", tasksList=" + tasksList + "]";
+	}
+	
 }

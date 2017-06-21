@@ -9,7 +9,16 @@ import com.java.korki.datamodel.Users;
 
 public class ProjectsHandler {
 
+	private static ProjectsHandler projectsHandler;
+
 	List<Projects> projectsList = new ArrayList<>();
+
+	public static ProjectsHandler getInstance() {
+		if (projectsHandler == null) {
+			projectsHandler = new ProjectsHandler();
+		}
+		return projectsHandler;
+	}
 
 	public void creatingProjects(String name) {
 		Projects project = new Projects(name);

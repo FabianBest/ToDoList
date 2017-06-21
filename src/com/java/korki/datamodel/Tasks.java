@@ -1,6 +1,7 @@
 package com.java.korki.datamodel;
 
-public class Tasks {
+
+public class Tasks implements Comparable<Tasks> {
 	private String name;
 
 	private String date;
@@ -8,6 +9,8 @@ public class Tasks {
 	private String day;
 	private String month;
 	private String year;
+	
+	private String description;
 
 	public Tasks(String name, String day, String month, String year) {
 		super();
@@ -20,7 +23,7 @@ public class Tasks {
 
 	@Override
 	public String toString() {
-		return "Tasks [name=" + name + ", date=" + date + "]";
+		return "Tasks [name=" + name + ", date=" + date + ", description=" +  description +"]";
 	}
 
 	public String getName() {
@@ -63,13 +66,23 @@ public class Tasks {
 		this.year = year;
 	}
 	
-	public String compareTo(String day) {
-		if(day.compareTo(this.day) < 0){
-		    return day;
-		} else {
-			return this.day;
-		}
+	public String getDescription() {
+		return description;
 	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int compareTo(Tasks task) {
+		int monthComp = month.compareTo(task.month);
+		
+		if(monthComp == 0 || monthComp > 0) {
+			return day.compareTo(task.day);
+		} else {
+				return monthComp;
+			}
+		}
 
 	@Override
 	public int hashCode() {
